@@ -1,5 +1,6 @@
 1. Start local confluent instance. Assumed schema-registry at 8081, kafka brokers 9091, 9092. Otherwise change in LocalhostKafkaTestData and Ingestion.properties
-2. Executing LocalhostKafkaTestData creates testdata
+2. mvn clean package
+2. Executing test case LocalhostKafkaTestData creates testdata
 3. ./exec.sh creates checkpoint-location and executes kafka-to-kafka ingestion from topic testdata to testdata_sink
 4. There will be 50 records in testdata_sink
 
