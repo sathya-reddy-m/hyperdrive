@@ -72,8 +72,8 @@ private[writer] class ParquetPartitioningStreamWriter(destination: String, proce
   }
 
   private def noCommittedParquetFilesExist(spark: SparkSession): Boolean = {
-    val fileCatalog = new MetadataLogFileIndex(spark, new Path(destination), None)
-    !FileStreamSink.hasMetadata(Seq(destination), spark.sparkContext.hadoopConfiguration) || fileCatalog.allFiles().isEmpty
+    val fileCatalog = new MetadataLogFileIndex(spark, new Path(destination), Map.empty, None)
+    !FileStreamSink.hasMetadata(Seq(destination), spark.sparkContext.hadoopConfiguration, spark.sessionState.conf) || fileCatalog.allFiles().isEmpty
   }
 }
 
